@@ -4,19 +4,16 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from "react-router-dom";
 import { allRoutes } from './routes/index';
 import Ajax from './utils/Ajax';
-import Login from './views/Login';
-import Dashboard from './views/Dashboard';
 
 export default function App() {
 
   Ajax.baseUrl = 'http://127.0.0.1:8000/api/';
 
-  const isLogged = false /* !!localStorage.token */
+  const isLogged = false; /* !!localStorage.token */
 
   // let req = new Ajax('token/obtain', {
   //   username: ""
@@ -27,8 +24,20 @@ export default function App() {
   return (
     <Router>
       <Switch>
+        {allRoutes.public.map((route) => {
+          const { component: Component } = route;
+          return (
+            <Route
+              path={`${route.path}`}
+              key={route.path}
+              exact={route.exact}
+              render={(props) => 
+                <Component {...props}/>
+              }
+            />
+          );
+        })}
         {allRoutes.private.map((route) => {
-          console.log(route);
           const { component: Component } = route;
           return (
             <Route
@@ -45,6 +54,14 @@ export default function App() {
             />
           );
         })}
+        <Route
+          path='/'
+          key='/'
+          exact={true}
+          render={() => 
+            <Redirect to='/dashboard'/>
+          }
+        />
       </Switch>
     </Router>
   );

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import '../styles/login.scss'
 
 const Login = () => {
-    const [loginData, setLoginData] = useState({username: "", password: ""})
+    const [loginData, setLoginData] = useState({username: "", password: ""});
+    
     const formValues = (event) => {
         setLoginData({
             ...loginData,

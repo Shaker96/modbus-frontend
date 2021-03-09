@@ -1,5 +1,3 @@
-import { lazy } from "react";
-
 import Login from '../views/Login';
 import Dashboard from '../views/Dashboard';
 
@@ -12,11 +10,6 @@ export const allRoutes = {
         }
     ],
     private: [
-        {
-            path: '/',
-            exact: true,
-            component: Dashboard
-        },
         {
             path: '/dashboard',
             exact: true,
