@@ -13,6 +13,11 @@ export const allRoutes = {
     ],
     private: [
         {
+            path: '/',
+            exact: true,
+            component: Dashboard
+        },
+        {
             path: '/dashboard',
             exact: true,
             component: Dashboard
