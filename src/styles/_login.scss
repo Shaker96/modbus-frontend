@@ -56,6 +56,9 @@
             &:active {
                 background-color: darken($color: $blue, $amount: 5%);
             }
+            &:hover:not(:active) {
+                background-color: $blue;
+            }
         }
     }
     &__input {
