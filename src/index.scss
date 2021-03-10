@@ -1,0 +1,44 @@
+@font-face {
+  font-family: montserrat-regular;
+  src: url('./assets/fonts/Montserrat-Regular.ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  font-family: montserrat-regular, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: montserrat-regular, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+}
+
+#root {
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+$blue: #0099CC;
+$light_gray: #EEEEEE;
+
+$screen-md: 767px;
+$screen-md-min: 768px;
+$screen-lg: 1023px;
+$screen-lg-min: 1024px;
+
+@import './styles/_login.scss';
