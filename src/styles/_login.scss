@@ -45,7 +45,8 @@
         text-transform: uppercase;
         outline: 0;
         &:focus {
-            outline: none;
+            outline: 0;
+            -webkit-tap-highlight-color: transparent;
         }
         &:hover {
             background-color: darken($color: $blue, $amount: 5%);
@@ -54,12 +55,6 @@
         @media screen and (max-width: $screen-md) {
             &:active {
                 background-color: darken($color: $blue, $amount: 5%);
-                cursor: pointer;
-                outline: 0;
-            }
-            &:hover {
-                outline: 0;
-                background-color: $blue;
             }
         }
     }
@@ -71,7 +66,7 @@
         border-radius: 10px;
         background-color: $light_gray;
         border: none;
-        font-size: 19px;
+        font-size: 15px;
         &:focus {
             outline: none;
         }
@@ -80,6 +75,7 @@
         &:not(:first-child) {
             margin-top: 5px;
         }
+        color: gray;
         margin-bottom: 5px;
     }
 }
