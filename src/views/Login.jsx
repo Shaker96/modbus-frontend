@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import endpoints from '../endpoints/index';
-import ajax from '../utils/Ajax';
-import axios from 'axios';
+import Ajax from '../utils/Ajax';
+Ajax.baseUrl = 'http://127.0.0.1:8000/api/';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({username: "", password: ""});
@@ -15,29 +15,22 @@ const Login = () => {
 
     const handleLogin = async (event) => {
         event.preventDefault()
-        // let req = new ajax(endpoints.LOGIN, {
-        //     headers: {
-        //         'Access-Control-Allow-Origin': '*',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     useBaseUrl: true,
-        //     method: 'POST',
-        //     body: {...loginData}
-        // })
-        // req.result()
-        //     .then((res) => {
-        //         console.log('res', res)
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
-        console.log(loginData)
-        const res = await axios.post("api/token/obtain/", {...loginData}, {
+        let req = new Ajax(endpoints.LOGIN, {
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
-            }
-        });
+            },
+            useBaseUrl: true,
+            method: 'POST',
+            body: {...loginData}
+        })
+        req.result()
+            .then((res) => {
+                console.log('res', res)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     return (
