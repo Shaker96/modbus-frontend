@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { allRoutes } from './routes/index';
 import Ajax from './utils/Ajax';
+import endpoints from './endpoints/index';
 
 export default function App() {
 
