@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -9,16 +9,26 @@ import {
 import { allRoutes } from './routes/index';
 import Ajax from './utils/Ajax';
 import endpoints from './endpoints/index';
+import LocalStorageService from './utils/localStorageService'
+import checkToken from './utils/sessionCheck'
 
 export default function App() {
 
-  Ajax.baseUrl = 'http://127.0.0.1:8000/api/';
+  const lss = LocalStorageService.getService()
+  Ajax.baseUrl = endpoints.BASE_URL;
+  
+  const [isLogged, setIsLogged] = useState(false);
 
-  const isLogged = false; /* !!localStorage.token */
+  let tokens = {...localStorage}
 
-  // let req = new Ajax('token/obtain', {
-  //   username: ""
-  // })
+  console.log(tokens);
+
+  useEffect(() => {
+    if (tokens.access !== undefined) {
+      checkToken()
+      setIsLogged(true)
+    }
+  }, []);
 
   console.log('APP', isLogged);
 
@@ -33,7 +43,11 @@ export default function App() {
               key={route.path}
               exact={route.exact}
               render={(props) => 
-                <Component {...props}/>
+                <Component 
+                  {...props} 
+                  isLogged={isLogged} 
+                  setIsLogged={setIsLogged}
+                />
               }
             />
           );

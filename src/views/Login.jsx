@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
+import { Redirect } from "react-router-dom";
 import endpoints from '../endpoints/index';
 import Ajax from '../utils/Ajax';
-Ajax.baseUrl = 'http://127.0.0.1:8000/api/';
+import LocalStorageService from '../utils/localStorageService';
 
-const Login = () => {
+const localStorageService = LocalStorageService.getService();
+
+const Login = (props) => {
     const [loginData, setLoginData] = useState({username: "", password: ""});
-    
+
     const formValues = (event) => {
         setLoginData({
             ...loginData,
             [event.target.name]: event.target.value
         })
     } 
-
+    
     const handleLogin = async (event) => {
         event.preventDefault()
         let req = new Ajax(endpoints.LOGIN, {
@@ -27,6 +30,8 @@ const Login = () => {
         req.result()
             .then((res) => {
                 console.log('res', res)
+                localStorageService.setToken(res)
+                props.setIsLogged(true);
             })
             .catch((error) => {
                 console.log(error);
@@ -47,6 +52,7 @@ const Login = () => {
                         <input className="login__input" required type="password" name="password" onChange={formValues}></input>
                     </div>
                     <button type="submit" className="login__button">Entrar</button>
+                    {props.isLogged ? <Redirect to='/dashboard' /> : null} 
                 </form>
             </div>
         </div>
