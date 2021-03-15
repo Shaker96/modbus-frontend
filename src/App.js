@@ -25,8 +25,7 @@ export default function App() {
 
   useEffect(() => {
     if (tokens.access !== undefined) {
-      checkToken()
-      setIsLogged(true)
+      checkToken(() => { setIsLogged(true) })
     }
   }, []);
 
