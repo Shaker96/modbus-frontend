@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const ActuatorCard = (props) => {
          
     return (
         <div className="actuator-card">
             <div className="actuator-card__header">
-                <img src='../assets/actuator-green.svg'></img>
+                <img src={require('../assets/img/actuator-icon.svg')} alt='actuator-icon'></img>
                 <h2>{props.actuator.name}</h2>
             </div>
             <div className="actuator-card__data-list">
-                {props.actuator.data.map((act) => {
+                {props.actuator.data.map((act, index) => {
                     return (
-                        <div className="actuator-card__data-item">
+                        <div className="actuator-card__data-item" key={'actuator-' + index}>
                             <span className="actuator-card__item-label">
                                 {act.name}
                             </span>

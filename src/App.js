@@ -9,12 +9,9 @@ import {
 import { allRoutes } from './routes/index';
 import Ajax from './utils/Ajax';
 import endpoints from './endpoints/index';
-import LocalStorageService from './utils/localStorageService'
 import checkToken from './utils/sessionCheck'
 
 export default function App() {
-
-  const lss = LocalStorageService.getService()
   Ajax.baseUrl = endpoints.BASE_URL;
   
   const [isLogged, setIsLogged] = useState(false);

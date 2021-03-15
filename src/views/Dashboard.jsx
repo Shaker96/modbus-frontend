@@ -8,7 +8,6 @@ const Dashboard = () => {
     const [actuators, setActuators] = useState([])
 
     const getActuators = () => {
-        console.log('get actuators', Ajax.token)
         let req = new Ajax(endpoints.ACTUATORS, {
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -19,8 +18,7 @@ const Dashboard = () => {
         })
         req.result()
             .then((res) => {
-                console.log('res', res)
-                setActuators(res)
+                setActuators(res.data)
             })
             .catch((error) => {
                 console.log(error);
@@ -28,8 +26,8 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
-        checkToken(getActuators)
-    })
+            checkToken(() => { getActuators() })
+    }, [])
 
     return (
         <div className="dashboard">
@@ -49,11 +47,11 @@ const Dashboard = () => {
                     <div className="dashboard__actuators">
                         <h2 className="actuators__title"></h2>
                         <div className="actuators__body">
-                            {actuators.map((actuator) => {
-                                console.log(actuator);
+                            {actuators.map((actuator, index) => {
                                 return (
                                     <ActuatorCard 
                                         actuator= {actuator}
+                                        key={'actuator-card-' + index}
                                     />
                                 )
                             })}
