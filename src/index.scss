@@ -28,6 +28,14 @@ body {
   height: 100%;
 }
 
+h1 {
+  font-size: 24px;
+}
+
+p {
+  margin: 10px 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -35,6 +43,11 @@ code {
 
 $blue: #0099CC;
 $light_gray: #EEEEEE;
+$gray: #828282;
+$orange: #f3bd34;
+$green: #5AD620;
+
+$scrollbar-color: #c1c1c1;
 
 $screen-md: 767px;
 $screen-md-min: 768px;
@@ -42,3 +55,5 @@ $screen-lg: 1023px;
 $screen-lg-min: 1024px;
 
 @import './styles/_login.scss';
+@import './styles/_dashboard.scss';
+@import './styles/scroll-list';

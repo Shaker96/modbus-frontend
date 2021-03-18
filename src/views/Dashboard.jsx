@@ -32,7 +32,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <div className="dashboard__header">
-                <h1 className="dahboard__title">Dashboard</h1>
+                <h1 className="dahboard__title">Diagnóstico Modbus</h1>
                 <nav className="dashboard__nav">
                     <a href="#">Panel de Control</a>
                     <a href="#">Cerrar Sesión</a>
@@ -40,17 +40,55 @@ const Dashboard = () => {
             </div>
             <div className="dashboard__body">
                 <div className="dashboard__left-panel">
-                    <div className="dashboard__alerts"></div>
-                    <div className="dashboard__events"></div>
+                    <div className="scroll-list scroll-list--alerts">
+                        <label className="scroll-list__title">Alertas</label>
+                        <a href="#" className="scroll-list__link">Ver Todos</a>
+                        <div className="scroll-list__container scroll-panel">
+                            {[1,2,3,4,5,6].map(() => {
+                                return (
+                                    <div className="scroll-list__item">
+                                        <div className="scroll-list__color-bar scroll-list__color-bar--orange"></div>
+                                        <div className="scroll-list__content">
+                                            <p>Alerta Peligro AAAAAA</p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                    <div className="scroll-list scroll-list--events">
+                        <label className="scroll-list__title">Eventos</label>
+                        <a href="#" className="scroll-list__link">Ver Todos</a>
+                        <div className="scroll-list__container scroll-panel">
+                            {[1, 2, 3, 4, 5, 6].map((n) => {
+                                return (
+                                    <div className="scroll-list__item">
+                                        <div className="scroll-list__color-bar scroll-list__color-bar--green"></div>
+                                        <div className="scroll-list__content">
+                                            <p>Evento numero {n}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
                 </div>
                 <div className="dashboard__right-panel">
                     <div className="dashboard__actuators">
-                        <h2 className="actuators__title"></h2>
-                        <div className="actuators__body">
+                        <label className="actuators__title">Red de Actuadores</label>
+                        <div className="actuators__body scroll-panel">
                             {actuators.map((actuator, index) => {
                                 return (
                                     <ActuatorCard 
                                         actuator= {actuator}
+                                        key={'actuator-card-' + index}
+                                    />
+                                )
+                            })}
+                            {actuators.map((actuator, index) => {
+                                return (
+                                    <ActuatorCard
+                                        actuator={actuator}
                                         key={'actuator-card-' + index}
                                     />
                                 )

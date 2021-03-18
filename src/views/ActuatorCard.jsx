@@ -13,7 +13,7 @@ const ActuatorCard = (props) => {
                     return (
                         <div className="actuator-card__data-item" key={'actuator-' + index}>
                             <span className="actuator-card__item-label">
-                                {act.name}
+                                {act.name}:
                             </span>
                             <span className="actuator-card__item-content">
                                 {act.value}
