@@ -1,0 +1,28 @@
+.actuator-card {
+  height: 230px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  width: 32%;
+  margin-bottom: 15px;
+  @media screen and (max-width: $screen-xl) {
+    width: 49%;
+  }
+  @media screen and (max-width: $screen-lg) {
+    width: 100%;
+  }
+  &__header {
+    display: flex;
+    margin-bottom: 5px;
+    h2 {
+      margin-left: auto;
+    }
+  }
+  &__data-item {
+    margin-bottom: 5px;
+  }
+  &__item-content {
+    float: right;
+  }
+
+}

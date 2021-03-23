@@ -13,7 +13,9 @@
     padding: 0 20px;
   }
   &__title {
-      
+    @media screen and (max-width: $screen-md) {
+      font-size: 18px;
+    }  
   }
   &__nav {
     margin-left: auto;
@@ -31,6 +33,10 @@
     width: 100%;
     height: calc( 100% - 70px );
     padding: 30px;
+    @media screen and (max-width: $screen-md) {
+      flex-wrap: wrap;
+      padding: 30px 20px;
+    }
   }
   &__left-panel {
     width: 30%;
@@ -38,6 +44,12 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    @media screen and (max-width: $screen-lg) {
+      width: 50%;
+    }
+    @media screen and (max-width: $screen-md) {
+      width: 100%;
+    }
     .scroll-list {
       height: 48%;
       display: flex;
@@ -48,6 +60,14 @@
     margin-left: 30px;
     width: 70%;
     height: 100%;
+    @media screen and (max-width: $screen-lg) {
+       width: 50%;
+    }
+    @media screen and (max-width: $screen-md) {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 30px;
+    }
   }
   &__actuators {
     width: 100%;
@@ -55,13 +75,27 @@
     display: flex;
     flex-direction: column;
     .actuators {
+      &__wrapper {
+        height: 100%;
+        min-height: 0;
+        background-color: $light_gray;
+        border-radius: 10px;
+        margin-top: 10px;
+        @media screen and (max-width: $screen-md) {
+          margin-bottom: 20px;
+        }
+      }
       &__title {
         font-size: 20px
       }
       &__body {
-        background-color: $light_gray;
+        padding: 20px;
+        padding-right: 15px;
         width: 100%;
-        border-radius: 10px;
+        max-height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
       }
     }
   }
