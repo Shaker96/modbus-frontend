@@ -61,7 +61,6 @@ const Dashboard = () => {
     useEffect(() => {
             checkToken(() => { 
                 getActuators() 
-                // getAlerts()
             })
     }, [])
 
@@ -85,13 +84,14 @@ const Dashboard = () => {
                     <div className="scroll-list scroll-list--alerts">
                         <label className="scroll-list__title">Alertas</label>
                         <a href="#" className="scroll-list__link">Ver Todos</a>
-                        <div className="scroll-list__container scroll-panel" ref={(ref) => this.scrollParentRef = ref} >
+                        <div className="scroll-list__container scroll-panel">
                             <InfiniteScroll
-                                getScrollParent={() => this.scrollParentRef}
                                 pageStart={1}
                                 loadMore={() => { getAlerts() }}
                                 hasMore={alerts.hasMore}
                                 loader={<div className="loader" key={alerts.currentPage}>Loading ...</div>}
+                                useWindow={false}
+                                threshold={5}
                             >
                                 {alerts.list.map((alert, index) => {
                                     return (
