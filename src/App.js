@@ -18,11 +18,13 @@ export default function App() {
 
   let tokens = {...localStorage}
 
-  console.log(tokens);
+  console.log('TOKENS', tokens);
 
   useEffect(() => {
     if (tokens.access !== undefined) {
       checkToken(() => { setIsLogged(true) })
+    } else {
+      setIsLogged(false)
     }
   }, []);
 
@@ -57,7 +59,11 @@ export default function App() {
               exact={route.exact}
               render={(props) => 
                 isLogged ? (
-                  <Component {...props}/>
+                  <Component 
+                    {...props}
+                    isLogged={isLogged}
+                    setIsLogged={setIsLogged}
+                  />
                 ) : (
                   <Redirect to='/login'/>
                 )

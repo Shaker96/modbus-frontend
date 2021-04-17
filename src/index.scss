@@ -32,6 +32,10 @@ h1 {
   font-size: 24px;
 }
 
+h3 {
+  margin: 0;
+}
+
 p {
   margin: 10px 0;
 }
@@ -72,3 +76,4 @@ $screen-xl-min: 1200px;
 @import './styles/_dashboard.scss';
 @import './styles/scroll-list';
 @import './styles/actuator-card';
+@import './styles/header';

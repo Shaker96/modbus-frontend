@@ -4,10 +4,18 @@ import Ajax from '../utils/Ajax'
 import endpoints from '../endpoints/index'
 import ActuatorCard from './ActuatorCard'
 import InfiniteScroll from 'react-infinite-scroller';
+import moment from 'moment';
+import 'moment/locale/es';
+import Header from './Header';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     const [actuators, setActuators] = useState([])
     const [alerts, setAlerts] = useState({
+        list: [],
+        currentPage: 1,
+        hasMore: true
+    })
+    const [events, setEvents] = useState({
         list: [],
         currentPage: 1,
         hasMore: true
@@ -25,6 +33,33 @@ const Dashboard = () => {
         req.result()
             .then((res) => {
                 setActuators(res.data)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    const getEvents = () => {
+        let req = new Ajax(endpoints.EVENTS, {
+            params: {
+                'size': 5,
+                'page': events.currentPage
+            },
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            },
+            useBaseUrl: true,
+            method: 'GET'
+        })
+        req.result()
+            .then((res) => {
+                console.log(res.results)
+                setEvents({
+                    list: [...events.list, ...res.results],
+                    currentPage: res.next !== null ? events.currentPage + 1 : events.currentPage,
+                    hasMore: res.next !== null ? true : false
+                })
             })
             .catch((error) => {
                 console.log(error);
@@ -58,6 +93,12 @@ const Dashboard = () => {
             })
     }
 
+    const formatDate = (date) => {
+        let fdate = moment(date)
+        moment.locale('es')
+        return fdate.locale(false).fromNow()
+    }
+
     useEffect(() => {
             checkToken(() => { 
                 getActuators() 
@@ -66,19 +107,9 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard">
-            <div className="dashboard__header">
-                <h1 className="dashboard__title">Diagnóstico Modbus</h1>
-                <nav className="dashboard__nav">
-                    <a href="#">
-                        <span className="nav__text desktop-only">Panel de Control</span>
-                        <span className="nav__icon mobile-only">PC</span>
-                    </a>
-                    <a href="#">
-                        <span className="nav__text desktop-only">Cerrar Sesión</span>
-                        <span className="nav__icon mobile-only">CS</span>
-                    </a>
-                </nav>
-            </div>
+            <Header
+                {...props}
+            />
             <div className="dashboard__body">
                 <div className="dashboard__left-panel">
                     <div className="scroll-list scroll-list--alerts">
@@ -97,8 +128,12 @@ const Dashboard = () => {
                                     return (
                                         <div className="scroll-list__item" key={'alert-' + index}>
                                             <div className="scroll-list__color-bar scroll-list__color-bar--orange"></div>
-                                            <div className="scroll-list__content">
+                                            <div className="scroll-list__content alert">
+                                                <h3>{alert.actuator}</h3>
                                                 <p>{alert.description}</p>
+                                                <div className="alert__date">
+                                                    {formatDate(alert.date)}
+                                                </div>
                                             </div>
                                         </div>
                                     )
@@ -110,16 +145,30 @@ const Dashboard = () => {
                         <label className="scroll-list__title">Eventos</label>
                         <a href="#" className="scroll-list__link">Ver Todos</a>
                         <div className="scroll-list__container scroll-panel">
-                            {[1, 2, 3, 4, 5, 6].map((n) => {
-                                return (
-                                    <div className="scroll-list__item" key={n}>
-                                        <div className="scroll-list__color-bar scroll-list__color-bar--green"></div>
-                                        <div className="scroll-list__content">
-                                            <p>Evento numero {n}</p>
+                            <InfiniteScroll
+                                pageStart={1}
+                                loadMore={() => { getEvents() }}
+                                hasMore={events.hasMore}
+                                loader={<div className="loader" key={events.currentPage}>Loading ...</div>}
+                                useWindow={false}
+                                threshold={5}
+                            >
+                                {events.list.map((event, index) => {
+                                    return (
+                                        <div className="scroll-list__item" key={'event-' + index}>
+                                            <div className="scroll-list__color-bar scroll-list__color-bar--green"></div>
+                                            <div className="scroll-list__content event">
+                                                <p className='event__description'>{event.event}</p>
+                                                {event.actuator ? <div className='event__actuator'>Actuador: {event.actuator}</div> : null}
+                                                {event.user ? <div className='event__user'>Usuario: {event.user}</div> : null}
+                                                <div className="event__date">
+                                                    {formatDate(event.log_date)}
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                )
-                            })}
+                                    )
+                                })}
+                            </InfiniteScroll>
                         </div>
                     </div>
                 </div>

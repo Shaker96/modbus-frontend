@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import endpoints from '../endpoints/index';
 import Ajax from '../utils/Ajax';
 import LocalStorageService from '../utils/localStorageService';
+import {logDict, eventLogger} from '../utils/eventLogger'
 
 const localStorageService = LocalStorageService.getService();
 
@@ -32,6 +33,7 @@ const Login = (props) => {
                 console.log('res', res)
                 localStorageService.setToken(res)
                 props.setIsLogged(true);
+                eventLogger(logDict.LOGIN)
             })
             .catch((error) => {
                 console.log(error);

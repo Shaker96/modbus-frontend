@@ -15,7 +15,37 @@
     height: 100%;
     margin-top: 10px;
   }
+  &__content {
+    p {
+      margin-bottom: 0;
+    }
+    .alert__date,
+    .event__date {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 14px;
+      color: $gray;
+    }
+    &.alert {
+
+    }
+    &.event {
+      .event {
+        &__description {
+          margin-top: 15px;
+          margin-bottom: 5px;
+        }
+        &__actuator, 
+        &__user {
+          width: 100%;
+          font-size: 14px;
+        }
+      } 
+    }
+  }
   &__item {
+    position: relative;
     background-color: $light_gray;
     margin: 10px 0;
     padding: 10px;

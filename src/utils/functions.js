@@ -1,3 +1,3 @@
-export default function setLocalStorageToken(token) {
-    localStorage.setItem('token', token);
-}
+import moment from 'moment';
+
+export const momentEs = moment.locale('es')
