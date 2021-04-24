@@ -7,10 +7,11 @@ export const logDict = {
     SIGNUP: 2,
     ACTUATOR: 3,
     READING: 4,
+    READINGS: 5,
 }
 
-export const eventLogger = (type, actuator = null) => {
-    let body = actuator ? { type, actuator } : { type } 
+export const eventLogger = (type, actuator_id = null) => {
+    let body = actuator_id ? { type, actuator_id } : { type } 
     
     let log = new Ajax(endpoints.CREATE_EVENT, {
         useBaseUrl: true,

@@ -11,12 +11,20 @@
   @media screen and (max-width: $screen-lg) {
     width: 100%;
   }
+  &__name {
+    margin-left: auto;
+    text-align: right;
+    h2 {
+      margin-top: 0;
+      margin-bottom: 3px;
+    }
+    span {
+      font-size: 14px;
+    }
+  }
   &__header {
     display: flex;
-    margin-bottom: 5px;
-    h2 {
-      margin-left: auto;
-    }
+    margin-bottom: 20px;
   }
   &__data-item {
     margin-bottom: 5px;

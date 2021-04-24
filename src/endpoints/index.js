@@ -4,7 +4,8 @@ const endpoints = {
     LOGOUT: 'logout/',
     REFRESH: 'token/refresh/',
     ACTUATORS: 'actuators/',
-    ACTUATOR_PAGE: 'actuator/',
+    ACTUATOR: 'actuator/',
+    READINGS: 'readings/',
     ALERTS: 'alerts/',
     EVENTS: 'events/',
     CREATE_EVENT: 'events/'

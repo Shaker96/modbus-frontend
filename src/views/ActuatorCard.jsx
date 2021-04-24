@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const ActuatorCard = (props) => {
@@ -11,10 +11,14 @@ const ActuatorCard = (props) => {
     //     )
     // } else {
         return (
-            <div className="actuator-card">
+            <Link className="actuator-card" 
+                to={"/actuator/" + props.actuator.id}>
                 <div className="actuator-card__header">
                     <img src={require('../assets/img/actuator-icon.svg')} alt='actuator-icon'></img>
-                    <h2>{props.actuator.name}</h2>
+                    <div className="actuator-card__name">
+                        <h2>{props.actuator.name}</h2>
+                        <span>Modelo: {props.actuator.model}</span>
+                    </div>
                 </div>
                 <div className="actuator-card__data-list">
                     {props.actuator.data.map((act, index) => {
@@ -30,7 +34,7 @@ const ActuatorCard = (props) => {
                         )
                     })}
                 </div>
-            </div>
+            </Link>
         )
     // }
 
