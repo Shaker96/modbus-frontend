@@ -5,6 +5,9 @@
   padding: 15px;
   width: 32%;
   margin-bottom: 15px;
+  &:hover {
+    border: 2px solid #0099CC;
+  }
   @media screen and (max-width: $screen-xl) {
     width: 49%;
   }

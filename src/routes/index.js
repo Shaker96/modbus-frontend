@@ -1,6 +1,7 @@
 import Login from '../views/Login';
 import Dashboard from '../views/Dashboard';
-import ActuatorPage from  '../views/ActuatorPage';
+import ActuatorReadings from  '../views/ActuatorReadings';
+import ActuatorTabs from '../views/ActuatorTabs';
 
 export const allRoutes = {
     public: [
@@ -19,12 +20,12 @@ export const allRoutes = {
         {
             path: '/actuator',
             exact: true,
-            component: ActuatorPage
+            component: ActuatorTabs
         },
         {
             path: '/actuator/:id',
             exact: true,
-            component: ActuatorPage
+            component: ActuatorTabs
         },
     ]
 }

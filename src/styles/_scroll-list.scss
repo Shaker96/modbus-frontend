@@ -2,6 +2,7 @@
   position: relative;
   &__title {
     font-size: 20px;
+    margin-bottom: 5px;
   }
   &__link {
     color: $gray;
@@ -12,7 +13,6 @@
   &__container {
     display: flex;
     flex-direction: column;
-    height: 100%;
     margin-top: 10px;
   }
   &__content {
@@ -47,7 +47,7 @@
   &__item {
     position: relative;
     background-color: $light_gray;
-    margin: 10px 0;
+    margin: 5px 0;
     padding: 10px;
     border-radius: 10px;
     display: flex;

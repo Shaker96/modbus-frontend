@@ -34,13 +34,13 @@ const Header = (props) => {
         <div className="header">
             <h1 className="header__title">Diagnóstico Modbus</h1>
             <nav className="header__nav">
-                <a href="#">
+                {/* <a href="#">
                     <span className="nav__text desktop-only">Panel de Control</span>
                     <span className="nav__icon mobile-only">PC</span>
-                </a>
+                </a> */}
                 <a href="#" onClick={logout}>
                     <span className="nav__text desktop-only">Cerrar Sesión</span>
-                    <span className="nav__icon mobile-only">CS</span>
+                    <span className="nav__icon mobile-only"><img src={require('../assets/img/logout.svg')}/></span>
                 </a>
             </nav>  
         </div>

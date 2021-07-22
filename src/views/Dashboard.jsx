@@ -106,7 +106,7 @@ const Dashboard = (props) => {
   }, [])
 
   return (
-    <div className="dashboard">
+    <div className="dashboard main-content">
       <Header
         {...props}
       />
@@ -114,8 +114,8 @@ const Dashboard = (props) => {
         <div className="dashboard__left-panel">
           <div className="scroll-list scroll-list--alerts">
             <label className="scroll-list__title">Alertas</label>
-            <a href="#" className="scroll-list__link">Ver Todos</a>
-            <div className="scroll-list__container scroll-panel">
+            {/* <a href="#" className="scroll-list__link">Ver Todos</a> */}
+            <div className="scroll-panel">
               <InfiniteScroll
                 pageStart={1}
                 loadMore={() => { getAlerts() }}
@@ -123,6 +123,7 @@ const Dashboard = (props) => {
                 loader={<div className="loader" key={alerts.currentPage}>Loading ...</div>}
                 useWindow={false}
                 threshold={5}
+                className="scroll-list__container"
               >
                 {alerts.list.map((alert, index) => {
                   return (
@@ -143,8 +144,8 @@ const Dashboard = (props) => {
           </div>
           <div className="scroll-list scroll-list--events">
             <label className="scroll-list__title">Eventos</label>
-            <a href="#" className="scroll-list__link">Ver Todos</a>
-            <div className="scroll-list__container scroll-panel">
+            {/* <a href="#" className="scroll-list__link">Ver Todos</a> */}
+            <div className="scroll-panel">
               <InfiniteScroll
                 pageStart={1}
                 loadMore={() => { getEvents() }}
@@ -152,6 +153,7 @@ const Dashboard = (props) => {
                 loader={<div className="loader" key={events.currentPage}>Loading ...</div>}
                 useWindow={false}
                 threshold={5}
+                className="scroll-list__container"
               >
                 {events.list.map((event, index) => {
                   return (

@@ -45,15 +45,15 @@ const Login = (props) => {
             <div className="login">
                 <div className="login__title">Inicia Sesión</div>
                 <form onSubmit={handleLogin}>
-                    <div className="login__field">
-                        <label className="login__label" htmlFor="username">Usuario</label>
-                        <input className="login__input" required type="text" name="username" onChange={formValues}></input>
+                    <div className="form__field">
+                        <label htmlFor="username">Usuario</label>
+                        <input required type="text" name="username" onChange={formValues}></input>
                     </div>
-                    <div className="login__field">
-                        <label className="login__label" htmlFor="password">Contraseña</label>
-                        <input className="login__input" required type="password" name="password" onChange={formValues}></input>
+                    <div className="form__field">
+                        <label htmlFor="password">Contraseña</label>
+                        <input required type="password" name="password" onChange={formValues}></input>
                     </div>
-                    <button type="submit" className="login__button">Entrar</button>
+                    <button type="submit" className="form__button">Entrar</button>
                     {props.isLogged ? <Redirect to='/dashboard' /> : null} 
                 </form>
             </div>

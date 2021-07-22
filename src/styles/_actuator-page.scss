@@ -1,0 +1,130 @@
+.actuator-page {
+    @media screen and (max-width: $screen-lg) {
+        .dashboard {
+            &__right-panel {
+                width: 60%;
+            }
+            &__left-panel {
+                width: 40%;
+            }
+        }
+    }
+    @media screen and (max-width: $screen-md) {
+        .dashboard {
+            &__right-panel,
+            &__left-panel {
+                width: 100%;
+            }
+        }
+    }
+    .actuator {
+        &__info {
+            background: $light_gray;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 18px 0 0;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 80px;
+        }
+        &__title {
+            font-size: 20px;
+        }
+    }
+    .date-filter {
+        margin-top: 20px;
+        margin-right: 18px;
+        .form {
+            &__field {
+                input {
+                    height: 40px;
+                }
+            }
+            &__button {
+                height: 40px;
+                font-size: 14px;
+                letter-spacing: 1px;
+                text-transform: capitalize;
+                width: 48%;
+            }
+        }
+        &__buttons {
+            display: flex;
+            justify-content: space-between;
+            .csv-downloader {
+                width: 48%;
+            }
+        }
+    }
+    .scroll-list {
+        height: calc(100% - 375px);
+        margin-top: 20px;
+        @media screen and (max-width: $screen-md) {
+            height: 46%;
+        }
+        &__item {
+            box-sizing: border-box;
+            border: 1px solid $light_gray;
+            &:hover {
+                border: 1px solid $blue;
+                cursor: pointer;
+            }
+            &.selected {
+                background-color: $blue;
+                color: white;
+            }
+        }
+    }
+    .readings__list {
+        padding: 20px;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: column;
+        .readings__block {
+            margin-bottom: 10px;
+        }
+        .block {
+            background: white;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-top: 5px;
+            &__date {
+                width: 100%;
+                padding: 10px 9px;
+                font-size: 21px;
+                font-weight: bold;
+            }
+            &__item {
+                display: flex;
+                justify-content: space-between;
+            }
+            &__name {
+                flex: 0 0 63%;
+                @media screen and (max-width: $screen-lg) {
+                    flex: 0 0 73%;
+                }
+            }
+            &__value {
+                flex: 0 0 35%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @media screen and (max-width: $screen-lg) {
+                    flex: 0 0 25%;
+                }
+            }
+            .value {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                margin: auto;
+                &--1 {
+                    background-color: $green;
+                }
+                &--0 {
+                    background-color: red;
+                }
+            }
+        }
+    }
+}
