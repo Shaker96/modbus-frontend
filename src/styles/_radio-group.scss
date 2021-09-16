@@ -1,0 +1,13 @@
+.radio-group {
+    margin: 20px 0;
+    .radio {
+        &__item {
+            &:not(:last-of-type) {
+                margin-bottom: 5px;
+            }
+            input {
+                margin-right: 12px;
+            }
+        }
+    }
+}

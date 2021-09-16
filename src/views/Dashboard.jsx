@@ -187,14 +187,6 @@ const Dashboard = (props) => {
                     />
                   )
                 })}
-                {actuators.map((actuator, index) => {
-                  return (
-                    <ActuatorCard
-                      actuator={actuator}
-                      key={'actuator-card-' + index}
-                    />
-                  )
-                })}
               </div>
             </div>
           </div>

@@ -10,6 +10,12 @@
       flex-wrap: wrap;
       padding: 30px 20px;
     }
+    &.movement-wrapper {
+      min-height: unset;
+      height: auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
   &__left-panel {
     width: 30%;

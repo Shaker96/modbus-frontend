@@ -16,12 +16,6 @@ const ActuatorReadings = (props) => {
     values: [],
   })
 
-  const [actuator, setActuator] = useState({
-    name: '',
-    model: '',
-    modbus_address: '',
-  })
-
   const [registers, setRegisters] = useState([])
 
   const [selectedRegisters, setSelectedRegisters] = useState([])
@@ -38,24 +32,6 @@ const ActuatorReadings = (props) => {
   })
 
   const [triggerCsv, setTriggerCsv] = useState(false)
-
-  const getActuatorData = () => {
-    let req = new Ajax(endpoints.ACTUATOR + props.id, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json'
-      },
-      useBaseUrl: true,
-      method: 'GET'
-    })
-    req.result()
-      .then((res) => {
-        setActuator(res.data)
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }
 
   const getReadings = () => {
     let req = new Ajax(endpoints.READINGS, {
@@ -147,7 +123,6 @@ const ActuatorReadings = (props) => {
   useEffect(() => {
     checkToken(() => {
       getReadings()
-      getActuatorData()
     })
     eventLogger(logDict.READINGS, props.id)
   }, [])
@@ -158,9 +133,9 @@ const ActuatorReadings = (props) => {
         <div className="actuator__data">
           <label className="actuator__title">Información del Actuador</label>
           <div className="actuator__info">
-            <div>Nombre: {actuator.name}</div>
-            <div>Modelo: {actuator.model}</div>
-            <div>Direccion Modbus: {actuator.modbus_address}</div>
+            <div>Nombre: {props.actuator.name}</div>
+            <div>Modelo: {props.actuator.model}</div>
+            <div>Direccion Modbus: {props.actuator.modbus_address}</div>
           </div>
         </div>
 

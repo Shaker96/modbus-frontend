@@ -17,7 +17,7 @@ const Login = (props) => {
         })
     } 
     
-    const handleLogin = async (event) => {
+    const handleLogin = (event) => {
         event.preventDefault()
         let req = new Ajax(endpoints.LOGIN, {
             headers: {
@@ -41,9 +41,9 @@ const Login = (props) => {
     }
 
     return (
-        <div className="login-container">
-            <div className="login">
-                <div className="login__title">Inicia Sesión</div>
+        <div className="center-box-container">
+            <div className="center-box login">
+                <div className="center-box__title">Inicia Sesión</div>
                 <form onSubmit={handleLogin}>
                     <div className="form__field">
                         <label htmlFor="username">Usuario</label>

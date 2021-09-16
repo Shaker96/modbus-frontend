@@ -8,7 +8,8 @@ const endpoints = {
     READINGS: 'readings/',
     ALERTS: 'alerts/',
     EVENTS: 'events/',
-    CREATE_EVENT: 'events/'
+    CREATE_EVENT: 'events/',
+    MOVE_ACTUATOR: 'move/',
 }
 
 export default endpoints

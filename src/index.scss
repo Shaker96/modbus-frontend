@@ -77,6 +77,10 @@ $screen-xl-min: 1200px;
   }
 }
 
+.hidden {
+  display: none !important;
+}
+
 #csv-download {
   display: none;
 }
@@ -146,10 +150,11 @@ $screen-xl-min: 1200px;
   }
 }
 
-@import './styles/_login.scss';
-@import './styles/_dashboard.scss';
+@import './styles/center-box';
+@import './styles/dashboard';
 @import './styles/scroll-list';
 @import './styles/actuator-card';
 @import './styles/header';
 @import './styles/actuator-page';
 @import './styles/actuator-tabs';
+@import './styles/radio-group';
