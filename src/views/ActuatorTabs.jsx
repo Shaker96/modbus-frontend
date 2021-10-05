@@ -33,7 +33,8 @@ const ActuatorTabs = (props) => {
             name: 'Diagnóstico',
             component: ActuatorDiagnosis,
             props: {
-                id: props.match.params.id
+                id: props.match.params.id,
+                actuator: actuator
             }
         },
         {

@@ -10,6 +10,7 @@ const endpoints = {
     EVENTS: 'events/',
     CREATE_EVENT: 'events/',
     MOVE_ACTUATOR: 'move/',
+    GET_DIAGNOSIS: 'diagnosis/',
 }
 
 export default endpoints

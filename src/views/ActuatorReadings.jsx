@@ -53,12 +53,12 @@ const ActuatorReadings = (props) => {
         let newValues = res.results.map((elem) => elem.value_set)
 
         if (registers.length === 0) {
-          let registersList = res.results[0].value_set.map((elem, i) => {
+          let registersList = res.results[0] ? res.results[0].value_set.map((elem, i) => {
             return {
               'index': i,
               'name': elem.register.description
             }
-          })
+          }) : []
           setRegisters(registersList)
         }
         setReadings({

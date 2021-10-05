@@ -1,0 +1,67 @@
+.diagnosis-wrapper {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    .diagnosis {
+        &__chart {
+            margin: 20px 0;
+            width: 100%;
+            max-height: 40vh;
+            @media screen and (min-width: $screen-lg-min) {
+                width: 47%;
+            }
+            &-wrapper {
+                flex: 1 0 auto;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                padding-bottom: 40px;
+                overflow-x: hidden;
+                @media screen and (min-width: $screen-lg-min) {
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+            }
+            .chart__title {
+                margin-bottom: 10px;
+            }
+            .Axis:first-child {
+                .tickLabel {
+                    transform: translate3d(-7px, 20px, 0px) rotate(-45deg) !important;
+                    font-size: 12px;
+                   
+                }
+                .tick:last-of-type {
+                    .tickLabel {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    .actuator {
+        &__data {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            @media screen and (max-width: $screen-md) {
+                flex-direction: column;
+            }
+            .data-wrapper {
+                flex: 0 0 47%;
+                @media screen and (max-width: $screen-md) {
+                    &:first-child {
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+        &__info {
+            margin-right: 0;
+            &.diagnosis {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
